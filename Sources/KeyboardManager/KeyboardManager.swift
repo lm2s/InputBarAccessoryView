@@ -45,7 +45,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     // MARK: - Properties [Private]
     
     /// The `NSLayoutConstraintSet` that holds the `inputAccessoryView` to the bottom if its superview
-    private var constraints: NSLayoutConstraintSet?
+    public var constraints: NSLayoutConstraintSet?
     
     /// A weak reference to a `UIScrollView` that has been attached for interactive keyboard dismissal
     private weak var scrollView: UIScrollView?
@@ -282,6 +282,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
         var frame = keyboardNotification.endFrame
         frame.origin.y = max(absoluteLocation.y, window.bounds.height - frame.height)
         frame.size.height = window.bounds.height - frame.origin.y
+        keyboardNotification.timeInterval = 0
         keyboardNotification.endFrame = frame
         callbacks[.willChangeFrame]?(keyboardNotification)
     }
