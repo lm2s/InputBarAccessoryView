@@ -45,7 +45,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     // MARK: - Properties [Private]
     
     /// The `NSLayoutConstraintSet` that holds the `inputAccessoryView` to the bottom if its superview
-    public var constraints: NSLayoutConstraintSet?
+    private(set) public var constraints: NSLayoutConstraintSet?
     
     /// A weak reference to a `UIScrollView` that has been attached for interactive keyboard dismissal
     private weak var scrollView: UIScrollView?
@@ -54,7 +54,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     private var callbacks: [KeyboardEvent: EventCallback] = [:]
     
     /// The pan gesture that handles dragging on the `scrollView`
-    private var panGesture: UIPanGestureRecognizer?
+    private(set) public var panGesture: UIPanGestureRecognizer?
 
     /// A cached notification used as a starting point when a user dragging the `scrollView` down
     /// to interactively dismiss the keyboard
